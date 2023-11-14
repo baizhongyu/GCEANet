@@ -30,7 +30,7 @@ python batch_convert.py
 Our model will be published as soon as possible.
 
 
-## Real SSS image synthesis
+## Real SSS image for classification test.
 - The real sonar images can be downloaded: [real_dataset](https://github.com/guizilaile23/ZSL-SSS) and [KLSG](https://github.com/huoguanying/SeabedObjects-Ship-and-Airplane-dataset).
 
 
