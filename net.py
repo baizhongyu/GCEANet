@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Aug  1 11:35:21 2020
-
-@author: ZJU
-"""
 import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 import torch
@@ -180,7 +175,7 @@ class MultiDiscriminator(nn.Module):
         return outputs
 
 ###########GCEA
-class GlobalContextBlock(nn.Module):
+class GCEA_Block(nn.Module):
     def __init__(self,
                  inplanes,
                  ratio=0.25,
@@ -319,8 +314,8 @@ class GlobalContextBlock(nn.Module):
 class Transform(nn.Module):
     def __init__(self, in_planes):
         super(Transform, self).__init__()
-        self.sanet4_1 = GlobalContextBlock(inplanes=in_planes)
-        self.sanet5_1 = GlobalContextBlock(inplanes=in_planes)
+        self.sanet4_1 = GCEA_Block(inplanes=in_planes)
+        self.sanet5_1 = GCEA_Block(inplanes=in_planes)
         # self.upsample5_1 = nn.Upsample(scale_factor=2, mode='nearest')
 
         self.merge_conv_pad = nn.ReflectionPad2d((1, 1, 1, 1))
@@ -416,24 +411,6 @@ class Net(nn.Module):
 
 
 
-        # stylized_c = self.transform(
-        #     g_t_feats[3], style_feats[3], g_t_feats[4], style_feats[4])
-        # #print('stylized',stylized.size())
-        # gt_c = self.decoder(stylized_c)
-        # gt_c_feats = self.encode_with_intermediate(gt_c)
-        #
-        #
-        # stylized_s = self.transform(
-        #     content_feats[3], g_t_feats[3], content_feats[4], g_t_feats[4])
-        # #print('stylized',stylized.size())
-        # gt_s = self.decoder(stylized_s)
-        # gt_s_feats = self.encode_with_intermediate(gt_s)
-
-
-
-
-
-
         loss_c = self.calc_content_loss(g_t_feats[3], content_feats[3], norm=True) + self.calc_content_loss(
             g_t_feats[4], content_feats[4], norm=True)
         loss_s = self.calc_style_loss(g_t_feats[0], style_feats[0])
@@ -457,17 +434,7 @@ class Net(nn.Module):
 
         style_pos = self.style_feature_contrastive(style_feats[2][0:batch_size])
         content_pos = self.content_feature_contrastive(content_feats[3][0:batch_size])
-        #style_pos = self.style_feature_contrastive(gt_s_feats[2][0:batch_size])
-        #content_pos = self.content_feature_contrastive(gt_c_feats[3][0:batch_size])
-        # style_feats = self.encode_with_intermediate(style)
-        # content_feats = self.encode_with_intermediate(content)
 
-        # style_up = self.style_feature_contrastive(g_t_feats[2][0:half])
-        # style_down = self.style_feature_contrastive(g_t_feats[2][half:])
-        # content_up = self.content_feature_contrastive(g_t_feats[3][0:half])
-        # content_down = self.content_feature_contrastive(g_t_feats[3][half:])
-        # print('g_t',g_t.size())#####g_t torch.Size([6, 3, 256, 256])
-        # print('g_t_feats', g_t_feats.size())
 
         style_contrastive_loss = 0
         for i in range(int(batch_size)):
