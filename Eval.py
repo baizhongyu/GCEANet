@@ -22,21 +22,21 @@ def test_transform():
 parser = argparse.ArgumentParser()
 
 # Basic options
-parser.add_argument('--content', type=str, default = '/home/zxy/桌面/ablation/video_test1/contents/frame_0001.png',
+parser.add_argument('--content', type=str, default = './contents/1.png',
                     help='File path to the content image')
-parser.add_argument('--style', type=str, default = '/home/zxy/桌面/efficiency_test/2.jpg',
+parser.add_argument('--style', type=str, default = '.style/2.jpg',
                     help='File path to the style image, or multiple style \
                     images separated by commas if you want to do style \
                     interpolation or spatial control')
 parser.add_argument('--steps', type=str, default = 1)
-parser.add_argument('--vgg', type=str, default = 'model/vgg_normalised.pth')
+parser.add_argument('--vgg', type=str, default = './model/vgg_normalised.pth')
 
 # Additional options
-parser.add_argument('--decoder', type=str, default = '/home/zxy/MFSANet/experiments/Ours/decoder_iter_180000.pth')
-parser.add_argument('--transform', type=str, default = '/home/zxy/MFSANet/experiments/Ours/transformer_iter_180000.pth')
+parser.add_argument('--decoder', type=str, default = './experiments/decoder_iter_180000.pth')
+parser.add_argument('--transform', type=str, default = './experiments/transformer_iter_180000.pth')
 parser.add_argument('--save_ext', default = '.jpg',
                     help='The extension name of the output image')
-parser.add_argument('--output', type=str, default = '/home/zxy/桌面/efficiency_test',
+parser.add_argument('--output', type=str, default = './experiments_test',
                     help='Directory to save the output image(s)')
 
 # Advanced options
