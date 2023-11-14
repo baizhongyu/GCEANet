@@ -42,14 +42,14 @@ def imshow(inp, title=None):
 # style_dir = '/home/bzy/SSS_recognition/upload/2-Style_transfer/000-Data/style/color'
 # save_dir = '/home/bzy/GCEANet/experiments/ablation/color/Ours_SNL'
 
-content_dir = '/home/bzy/ablation/C/'
-style_dir = '/home/bzy/ablation/S'
-save_dir = '/home/bzy/ablation/Ours_SNL'
+content_dir = './sonar/Content/'
+style_dir = '/sonar/Style'
+save_dir = './output'
 
 transform = transforms.Compose([
     transforms.Resize([256, 256]),
     #transforms.Grayscale(),
-    #transforms.RandomHorizontalFlip(),
+    transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     ])
 
@@ -67,8 +67,8 @@ decoder.eval()
 transform.eval()
 vgg.eval()
 
-decoder.load_state_dict(torch.load('/home/bzy/GCEANet/experiments/Ours_GCEA_SNL/decoder_iter_160000.pth'))
-transform.load_state_dict(torch.load('/home/bzy/GCEANet/experiments/Ours_GCEA_SNL/transformer_iter_160000.pth'))
+decoder.load_state_dict(torch.load('./experiments/decoder_iter_160000.pth'))
+transform.load_state_dict(torch.load('./experiments/transformer_iter_160000.pth'))
 vgg.load_state_dict(torch.load('model/vgg_normalised.pth'))
 
 norm = nn.Sequential(*list(vgg.children())[:1])
@@ -93,7 +93,7 @@ decoder.to(device)
 #######     Stylization  ######################################################################################################################
 ###############################################################################################################################################
 
-style_number = 4
+style_number = 2
 
 cuda = True
 # print('centent_set',Content_set)
