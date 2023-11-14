@@ -28,5 +28,5 @@ python Eval.py --content input/content/1.jpg --style input/style/1.jpg
 Our model will be published as soon as possible.
 
  ## Acknowledgments
-The code in this repository is based on [SANet](https://github.com/GlebBrykin/SANET). Thanks for both their paper and code.
+The code in this repository is based on [Li et al.](https://github.com/guizilaile23/ZSL-SSS) and [SANet](https://github.com/GlebBrykin/SANET). Thanks for both their paper and code.
 
