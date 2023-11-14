@@ -42,7 +42,7 @@ def imshow(inp, title=None):
 # style_dir = '/home/bzy/SSS_recognition/upload/2-Style_transfer/000-Data/style/color'
 # save_dir = '/home/bzy/GCEANet/experiments/ablation/color/Ours_SNL'
 
-content_dir = './optic_test'
+content_dir = './Optic_test'
 style_dir = '/sonar_test'
 save_dir = './output'
 
