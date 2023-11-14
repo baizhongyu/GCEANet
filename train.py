@@ -16,7 +16,7 @@ from torchvision import transforms
 from tqdm import tqdm
 from torchvision.utils import save_image
 
-import net #######change
+import GCEA_net #######change
 from sampler import InfiniteSamplerWrapper
 
 cudnn.benchmark = True
