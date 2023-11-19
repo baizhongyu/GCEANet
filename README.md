@@ -27,7 +27,7 @@ python train.py --content_dir /data/train2014 --style_dir /data/WikiArt/train
 ```
 python batch_convert.py
 ```
-Our model will be published as soon as possible.
+The weights of our model can be found: https://drive.google.com/drive/folders/1YoTBiHtaQwLQWvu7GEjqoaTFWFEeiIKI?usp=sharing
 
 
 ## Real SSS image for classification test.
