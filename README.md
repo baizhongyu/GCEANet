@@ -8,6 +8,8 @@ We recommend the following configurations:
 - PyTorch 1.8.0
 - CUDA 11.1
 
+The model code will be published soon.
+
 
 ## Model Training  
 - Download the content dataset: [MS-COCO](https://cocodataset.org/#download).
